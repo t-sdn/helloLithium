@@ -27,6 +27,8 @@ public class HelloModule extends org.opendaylight.yang.gen.v1.urn.opendaylight.p
     public java.lang.AutoCloseable createInstance() {
         HelloProvider provider = new HelloProvider();
         getBrokerDependency().registerProvider(provider);
+        HelloRuntimeRegistration r = getRootRuntimeBeanRegistratorWrapper().register(provider);
+
         return provider;
     }
 

@@ -2,8 +2,73 @@ module hello {
     yang-version 1;
     namespace "urn:opendaylight:params:xml:ns:yang:hello";
     prefix "hello";
+    
+    import yang-ext {prefix ext; revision-date "2013-07-09";}
 
     revision "2015-01-05" {
         description "Initial revision of hello model";
     }
+        
+    rpc hello-world {
+            input {
+                    leaf strin {
+                            type string;
+                    }
+            }
+            output {
+                    leaf greating {
+                            type string;
+                    }
+            }
+    }
+    
+   rpc hello-world-write {
+            input {
+                    leaf strin {
+                            type string;
+                    }
+            }
+            output {
+                    leaf strout {
+                            type string;
+                    }
+            }
+    }
+    
+    rpc hello-world-read {
+            input {
+                    leaf strin {
+                            type string;
+                    }
+            }
+            output {
+                    leaf strout {
+                            type string;
+                    }
+            }
+    }
+    
+    rpc noinput-output {
+    	description "no input and output rpc";
+    }
+    
+    container helloWorld {                
+          leaf counter {        
+                  type uint32;
+                  config true;
+                  default 100;
+           }        
+                    
+           leaf value {        
+                  type string;
+                  config false;
+                  mandatory false;
+           }        
+    }
+    
+     notification multipleOfTens {
+    	description
+    	"indicates that the counter has reached multiple of 10.";
+    }
+    
 }
